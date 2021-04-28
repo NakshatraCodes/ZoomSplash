@@ -3,7 +3,13 @@ const express = require("express");
 const request = require("request");
 
 const { Client } = require("pg");
-const pg = new Client(process.env.DATABASE_URL);
+
+const pg = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
+});
 
 pg.connect().catch((error) => {
   console.log("Error connecting to database", error);
