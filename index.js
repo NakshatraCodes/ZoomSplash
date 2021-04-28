@@ -6,9 +6,6 @@ const { Client } = require("pg");
 
 const pg = new Client({
   connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false,
-  },
 });
 
 pg.connect().catch((error) => {
